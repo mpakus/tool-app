@@ -1,0 +1,20 @@
+=< link_to 'Back', tools_path
+
+p#notice = notice
+
+.row
+  .col-md-12
+    p
+      strong Name:
+      = tool.name
+    p
+      strong Language:
+      = tool.language
+    p
+      strong JSON spec:
+      pre.text-monospace.border.rounded-lg.p-2
+        = tool.json_spec
+
+=> link_to 'Edit', edit_tool_path(tool)
+'|
+=< link_to 'Back', tools_path

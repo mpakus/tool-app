@@ -1,0 +1,19 @@
+= form_for tool do |f|
+
+  - if tool.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(tool.errors.count, "error")} prohibited this tool from being saved:"
+      ul
+        - tool.errors.full_messages.each do |message|
+          li = message
+
+  .form-group
+    = f.label :name
+    = f.text_field :name, required: true, class: 'form-control'
+
+  .form-group
+    = f.label :language
+    = f.text_field :language, maxlength: 2, required: true, class: 'form-control'
+
+  .actions
+    = f.submit 'Save', class: 'btn btn-primary'

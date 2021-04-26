@@ -1,0 +1,26 @@
+h1 Tools
+
+.row
+  .col-md-12
+    p.text-right
+      = link_to 'New tool', new_tool_path, class: 'btn btn-success'
+
+.row
+  .col-md-12
+    table.table.table-hovered.table-striped
+      thead
+        tr
+          th Name
+          th Language
+          th
+          th
+          th
+
+      tbody
+        - tools.each do |tool|
+          tr
+            td = tool.name
+            td = tool.language
+            td = link_to 'Show', tool
+            td = link_to 'Edit', edit_tool_path(tool)
+            td = link_to 'Destroy', tool, data: { confirm: 'Are you sure?' }, method: :delete
