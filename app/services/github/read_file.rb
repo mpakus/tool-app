@@ -22,7 +22,7 @@ class Github::ReadFile
   attr_reader :prefix
 
   def fetch(file_name)
-    Octokit.contents('mpakus/tool-specs', path: file_name)[:download_url]
+    Octokit.contents(github_specs_repo, path: file_name)[:download_url]
   rescue StandardError => e
     Rails.logger.debug(e.message)
     nil
@@ -31,5 +31,9 @@ class Github::ReadFile
   def read(url)
     # https://raw.githubusercontent.com/mpakus/tool-specs/master/BMI.en.master.json
     URI.parse(url).open(&:read)
+  end
+
+  def github_specs_repo
+    Rails.configuration.app.dig(:github, :specs_repo)
   end
 end

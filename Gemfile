@@ -9,9 +9,10 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'octokit'
 gem 'pg', '~> 1.1'
 gem 'puma', '~> 5.0'
-gem 'rails', '~> 6.1.3', '>= 6.1.3.1'
-gem 'slim-rails'
 gem 'que', '1.0.0.beta4'
+gem 'rails', '~> 6.1.3', '>= 6.1.3.1'
+gem 'ruby-lokalise-api'
+gem 'slim-rails'
 
 group :development, :test do
   gem 'annotate'

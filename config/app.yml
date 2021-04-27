@@ -1,0 +1,12 @@
+default: &default
+  github:
+    specs_repo: 'mpakus/tool-specs'
+
+production:
+  *default
+
+development:
+  *default
+
+test:
+  *default
