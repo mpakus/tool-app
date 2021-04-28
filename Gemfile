@@ -5,6 +5,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.2'
 
+gem 'awesome_print'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'octokit'
 gem 'pg', '~> 1.1'
@@ -16,7 +17,6 @@ gem 'slim-rails'
 
 group :development, :test do
   gem 'annotate'
-  gem 'awesome_print'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'brakeman'

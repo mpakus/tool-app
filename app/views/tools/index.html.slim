@@ -10,17 +10,20 @@ h1 Tools
     table.table.table-hovered.table-striped
       thead
         tr
-          th Name
-          th Language
-          th
-          th
-          th
+          th.col-md-6 Name
+          th.col-md-1 Language
+          th.col-md-3
+          th.col-md-2
 
       tbody
         - tools.each do |tool|
           tr
             td = tool.name
             td = tool.language
-            td = link_to 'Show', tool
-            td = link_to 'Edit', edit_tool_path(tool)
-            td = link_to 'Destroy', tool, data: { confirm: 'Are you sure?' }, method: :delete
+            td
+              .btn-group
+                = link_to 'Show', tool, class: 'btn btn-secondary'
+                = link_to 'Edit', edit_tool_path(tool), class: 'btn btn-secondary'
+                = link_to 'Destroy', tool, data: { confirm: 'Are you sure?' }, method: :delete, class: 'btn btn-danger'
+            td
+              = link_to 'Update', translate_tool_path(tool), class: 'btn btn-info'

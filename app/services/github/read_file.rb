@@ -3,12 +3,13 @@
 class Github::ReadFile
   require 'open-uri'
 
-  def initialize(prefix)
+  def initialize(prefix, master_only: false)
     @prefix = prefix
+    @master_only = master_only
   end
 
   def perform
-    ["#{prefix}.master.json", "#{prefix}.json"].each do |file_name|
+    file_names.each do |file_name|
       url = fetch(file_name)
       next if url.blank?
 
@@ -19,7 +20,11 @@ class Github::ReadFile
 
   private
 
-  attr_reader :prefix
+  attr_reader :prefix, :master_only
+
+  def file_names
+    master_only ? ["#{prefix}.master.json"] : ["#{prefix}.master.json", "#{prefix}.json"]
+  end
 
   def fetch(file_name)
     Octokit.contents(github_specs_repo, path: file_name)[:download_url]

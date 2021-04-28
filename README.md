@@ -1,3 +1,3 @@
 # Mediately Code Challenge
 
-[README PDF file](./docs/README.md)
+[README PDF file](./docs/README.pdf)

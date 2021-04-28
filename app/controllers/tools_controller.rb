@@ -29,7 +29,14 @@ class ToolsController < ApplicationController
 
   def destroy
     tool.destroy
-    redirect_to tools_url, notice: 'tool was successfully destroyed.'
+
+    redirect_to tools_path, notice: 'tool was successfully destroyed.'
+  end
+
+  def translate
+    TranslateAndUploadTool.enqueue(tool.id)
+
+    redirect_to tools_path, notice: 'In process...'
   end
 
   private
