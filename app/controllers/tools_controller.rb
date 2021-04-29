@@ -13,7 +13,7 @@ class ToolsController < ApplicationController
     tool = Tool.new(tool_params)
 
     if tool.save
-      redirect_to tool, notice: 'tool was successfully created.'
+      redirect_to tool, notice: 'Tool was successfully created.'
     else
       render :new
     end
@@ -21,7 +21,7 @@ class ToolsController < ApplicationController
 
   def update
     if tool.update(tool_params)
-      redirect_to tool, notice: 'tool was successfully updated.'
+      redirect_to tools_path, notice: 'Tool was successfully updated.'
     else
       render :edit
     end
@@ -30,7 +30,7 @@ class ToolsController < ApplicationController
   def destroy
     tool.destroy
 
-    redirect_to tools_path, notice: 'tool was successfully destroyed.'
+    redirect_to tools_path, notice: 'Tool was successfully destroyed.'
   end
 
   def translate

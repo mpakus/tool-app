@@ -1,3 +1,10 @@
+- flash.each do |type, message|
+  div class="alert #{flash_class(type)} alert-dismissible fade show text-center" role="alert"
+    = message
+    button.close type="button" data-dismiss="alert" aria-label="Close"
+      span[aria-hidden="true"]
+      | ×
+
 h1 Tools
 
 .row
@@ -26,4 +33,4 @@ h1 Tools
                 = link_to 'Edit', edit_tool_path(tool), class: 'btn btn-secondary'
                 = link_to 'Destroy', tool, data: { confirm: 'Are you sure?' }, method: :delete, class: 'btn btn-danger'
             td
-              = link_to 'Update', translate_tool_path(tool), class: 'btn btn-info'
+              = button_to 'Update', translate_tool_path(tool), method: :POST, class: 'btn btn-info'

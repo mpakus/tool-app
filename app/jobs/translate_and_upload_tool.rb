@@ -5,6 +5,7 @@ class TranslateAndUploadTool < Que::Job
     tool = Tool.find(tool_id)
 
     translations = Translation::DownloadFromLokalise.new(tool).perform
-    Github::CreatePullRequests.new(tool, translations).perform
+    # translate => create branch - save to file => create pr
+    Github::CreatePullRequest.new(tool, translations).perform
   end
 end

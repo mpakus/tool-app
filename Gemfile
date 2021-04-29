@@ -7,6 +7,7 @@ ruby '2.7.2'
 
 gem 'awesome_print'
 gem 'bootsnap', '>= 1.4.4', require: false
+gem 'git'
 gem 'octokit'
 gem 'pg', '~> 1.1'
 gem 'puma', '~> 5.0'

@@ -4,11 +4,6 @@ class Translation::DownloadFromLokalise < Translation::Base
   def perform
     languages = {}
 
-    # attributes.limit(2).each do |key, _v|
-    #   ap client.keys(project_id, { key_id: key })
-    #   puts '-'*35
-    # end
-    # client.keys(project_id, { key_id: ['BMI_infoSections_references_headerTitle', 'BMI_infoSections_references_infoItems_reference2_title']})
     params = {
       include_translations: 1,
       filter_keys:          attributes.keys.join(',')

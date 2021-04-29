@@ -48,3 +48,6 @@ Style/AsciiComments:
 
 Layout/HashAlignment:
   EnforcedColonStyle: table
+
+Lint/MissingSuper:
+  Enabled: false

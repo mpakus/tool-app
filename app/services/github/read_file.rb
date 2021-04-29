@@ -1,19 +1,19 @@
 # frozen_string_literal: true
 
-class Github::ReadFile
-  require 'open-uri'
-
+class Github::ReadFile < Github::Base
   def initialize(prefix, master_only: false)
-    @prefix = prefix
+    @prefix      = prefix
     @master_only = master_only
   end
 
   def perform
-    file_names.each do |file_name|
-      url = fetch(file_name)
-      next if url.blank?
+    git.checkout('master')
+    git.pull
 
-      return read(url)
+    file_names.each do |file_name|
+      file_content = read(file_name)
+
+      return file_content if file_content.present?
     end
     nil
   end
@@ -26,19 +26,12 @@ class Github::ReadFile
     master_only ? ["#{prefix}.master.json"] : ["#{prefix}.master.json", "#{prefix}.json"]
   end
 
-  def fetch(file_name)
-    Octokit.contents(github_specs_repo, path: file_name)[:download_url]
+  def read(file_name)
+    File.read(
+      Rails.root.join(github_path, file_name)
+    )
   rescue StandardError => e
     Rails.logger.debug(e.message)
     nil
-  end
-
-  def read(url)
-    # https://raw.githubusercontent.com/mpakus/tool-specs/master/BMI.en.master.json
-    URI.parse(url).open(&:read)
-  end
-
-  def github_specs_repo
-    Rails.configuration.app.dig(:github, :specs_repo)
   end
 end
