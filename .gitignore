@@ -65,4 +65,4 @@ tmp/
 .idea/
 coverage/
 .keep
-github/
+/github/
